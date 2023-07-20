@@ -27,7 +27,7 @@ Demo Slicing App, by Impresif Media Dev © 2023<br><br>
 ### Original Mockup:
 
 <p float="left">
-  <img src="/mockup/screen-01.png" width="100" />
+  <img src="/mockup/screen-01.jpeg" width="100" />
 </p>
 
 Developed by Impresif Media Dev © 2023<br>
