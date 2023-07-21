@@ -1,4 +1,4 @@
-package com.example.responsivetutorial
+package com.impresifmedia.demoslicingflutter
 
 import io.flutter.embedding.android.FlutterActivity
 

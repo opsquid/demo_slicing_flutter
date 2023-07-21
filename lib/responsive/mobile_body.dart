@@ -1,3 +1,4 @@
+import 'package:demoslicingflutter/constants/ui_constants.dart';
 import 'package:flutter/material.dart';
 
 class MyMobileBody extends StatelessWidget {
@@ -8,7 +9,7 @@ class MyMobileBody extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.deepPurple[200],
       appBar: AppBar(
-        title: const Text('M O B I L E'),
+        title: const Text(StringConstants.mobileTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

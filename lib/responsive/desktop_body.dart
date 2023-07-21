@@ -1,14 +1,32 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-class MyDesktopBody extends StatelessWidget {
+import 'package:demoslicingflutter/constants/ui_constants.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+class MyDesktopBody extends StatefulWidget {
   const MyDesktopBody({Key? key}) : super(key: key);
+
+  @override
+  State<MyDesktopBody> createState() => _MyDesktopBodyState();
+}
+
+class _MyDesktopBodyState extends State<MyDesktopBody> {
+  late String _timeString;
+
+  @override
+  void initState() {
+    _timeString = _formatDateTime(DateTime.now());
+    Timer.periodic(const Duration(seconds: 1), (Timer t) => _getTime());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.deepPurple[200],
       appBar: AppBar(
-        title: const Text('D E S K T O P'),
+        title: const Text(StringConstants.desktopTitle),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -59,6 +77,28 @@ class MyDesktopBody extends StatelessWidget {
           ],
         ),
       ),
+      persistentFooterButtons: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(_timeString),
+            const SizedBox(width: SpacingConst.small),
+            const Text(StringConstants.desktopTitle),
+          ],
+        ),
+      ],
     );
+  }
+
+  void _getTime() {
+    final DateTime now = DateTime.now();
+    final String formattedDateTime = _formatDateTime(now);
+    setState(() {
+      _timeString = formattedDateTime;
+    });
+  }
+
+  String _formatDateTime(DateTime dateTime) {
+    return DateFormat('MM/dd/yyyy hh:mm:ss').format(dateTime);
   }
 }

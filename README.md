@@ -17,7 +17,7 @@ Demo Slicing Flutter App, by Impresif Media Dev © 2023<br><br>
 4. Cocoapod ![Badge](https://badgen.net/badge/ver/^1.12.1/pink) // optional for ios build only
 5. Xcode ![Badge](https://badgen.net/badge/ver/^14.2/yellow) // optional for ios build
 
-### Run below syntax:
+### Runing The App:
 
 `# cd ios || pod install` // optional for ios build only<br>
 `# flutter pub get`<br>
