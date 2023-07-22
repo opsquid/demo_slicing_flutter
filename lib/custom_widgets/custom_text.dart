@@ -4,9 +4,15 @@ class CustomText extends StatelessWidget {
   final String _text;
   final double _fontSize;
   final Color _color;
+  final TextOverflow overflow;
 
-  const CustomText({Key? key, required String text, required double fontSize, required Color color})
-      : _text = text,
+  const CustomText({
+    Key? key,
+    required String text,
+    required double fontSize,
+    required Color color,
+    this.overflow = TextOverflow.ellipsis,
+  })  : _text = text,
         _fontSize = fontSize,
         _color = color,
         super(key: key);
@@ -16,7 +22,8 @@ class CustomText extends StatelessWidget {
     return Text(
       _text,
       style: TextStyle(fontSize: _fontSize, color: _color, fontWeight: FontWeight.bold),
-      overflow: TextOverflow.ellipsis,
+      overflow: overflow,
+      textAlign: TextAlign.center,
     );
   }
 }

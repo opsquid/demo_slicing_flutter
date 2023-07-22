@@ -30,7 +30,7 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
         title: const Text(StringConstants.desktopTitle),
       ),
       body: const Padding(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(SpacingConst.small),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -84,7 +84,7 @@ class TopRowHeaderContainer extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(SpacingConst.small),
                 child: Container(
                   color: Colors.blueAccent[400],
                   height: SizeConstants.topRowHeader,
@@ -105,66 +105,93 @@ class FirstColumnContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 1,
-      child: Column(
-        children: [
-          Expanded(
-            child: Scrollbar(
-              thumbVisibility: true,
-              thickness: 6,
-              child: ListView.builder(
-                itemCount: 8,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(
-                      left: SpacingConst.small,
-                      top: SpacingConst.small,
-                      right: SpacingConst.small + 6,
-                      bottom: SpacingConst.small,
-                    ),
-                    child: Container(
-                      color: Colors.deepPurple[300],
-                      height: 100,
-                    ),
-                  );
-                },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: SpacingConst.small),
+        child: Column(
+          children: [
+            Expanded(
+              child: Scrollbar(
+                thumbVisibility: true,
+                thickness: 6,
+                child: ListView.builder(
+                  itemCount: 8,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(
+                        left: SpacingConst.small,
+                        top: SpacingConst.small,
+                        right: SpacingConst.small + 6,
+                        bottom: SpacingConst.small,
+                      ),
+                      child: Container(
+                        color: Colors.deepPurple[300],
+                        height: 100,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-          Container(
-            color: Colors.blueAccent[400],
-            margin: const EdgeInsets.all(SpacingConst.small),
-            height: 90,
-            child: Row(children: [
-              Container(
-                width: 25,
-                height: double.maxFinite,
-                decoration: const BoxDecoration(
-                  color: Colors.purple,
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(RadiusConst.small),
-                    bottomRight: Radius.circular(RadiusConst.small),
+            Container(
+              color: Colors.blueAccent[400],
+              margin: const EdgeInsets.all(SpacingConst.small),
+              height: 90,
+              child: Row(children: [
+                Container(
+                  width: 25,
+                  height: double.maxFinite,
+                  decoration: const BoxDecoration(
+                    color: Colors.purple,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(RadiusConst.small),
+                      bottomRight: Radius.circular(RadiusConst.small),
+                    ),
                   ),
-                ),
-                child: const Center(
-                  child: RotatedBox(
-                    quarterTurns: -1,
-                    child: CustomText(
-                      text: StringConstants.orderList,
-                      fontSize: SizeConstants.tiny,
-                      color: ColorConstants.white,
+                  child: const Center(
+                    child: RotatedBox(
+                      quarterTurns: -1,
+                      child: CustomText(
+                        text: StringConstants.orderList,
+                        fontSize: SizeConstants.tiny,
+                        color: ColorConstants.white,
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ]),
-          ),
-          // First Column Button Row
-          Container(
-            color: Colors.brown,
-            margin: const EdgeInsets.all(SpacingConst.small),
-            height: SizeConstants.buttonRow,
-          ),
-        ],
+              ]),
+            ),
+            // First Column Button Row
+            const FirstColumnButtonRow(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class FirstColumnButtonRow extends StatelessWidget {
+  const FirstColumnButtonRow({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      height: SizeConstants.buttonRow,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            SizedBox(width: SpacingConst.small),
+            CustomButton(text: StringConstants.exit, color: ColorConstants.black),
+            SizedBox(width: SpacingConst.small),
+            CustomButton(text: StringConstants.reprint, color: ColorConstants.darkPurple),
+            SizedBox(width: SpacingConst.small),
+            CustomButton(text: StringConstants.specialTrans, color: ColorConstants.darkPurple, overflow: TextOverflow.visible),
+            SizedBox(width: SpacingConst.small),
+            CustomButton(text: StringConstants.checkout, color: ColorConstants.green),
+          ],
+        ),
       ),
     );
   }
@@ -178,9 +205,8 @@ class SecondColumnContainer extends StatelessWidget {
     return Expanded(
       flex: 1,
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(SpacingConst.small),
         child: Container(
-          width: 500,
           color: Colors.deepPurple[300],
         ),
       ),

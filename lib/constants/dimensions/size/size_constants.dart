@@ -7,11 +7,12 @@ class SizeConstants {
   static const double large = 20;
   static const double big = 22;
   static const double huge = 28;
-  // Device Width
+  // Custom Width
   static const double mobileWidth = 600;
+  static const double buttonWidth = 110;
   // Custom Heights
   static const double topRowHeader = 80;
-  static const double buttonRow = 80;
-  static const double buttonHeights = 100;
+  static const double buttonRow = 70;
+  static const double buttonHeight = 50;
   static const double bottomFooter = 50;
 }
