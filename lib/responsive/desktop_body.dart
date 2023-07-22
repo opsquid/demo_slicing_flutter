@@ -29,32 +29,15 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
       appBar: AppBar(
         title: const Text(StringConstants.desktopTitle),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
+      body: const Padding(
+        padding: EdgeInsets.all(8.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             // Top Row Header
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                          color: Colors.blueAccent[400],
-                          height: SizeConstants.topRowHeader,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ),
-
+            TopRowHeaderContainer(),
             // Contents
-            const Expanded(
+            Expanded(
               child: Row(
                 children: [
                   // First Column
@@ -67,30 +50,10 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
           ],
         ),
       ),
+
+      // Footer Row
       persistentFooterButtons: [
-        Container(
-          color: ColorConstants.black,
-          height: SizeConstants.huge,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(width: SpacingConst.small),
-              CustomText(
-                text: _timeString,
-                fontSize: SizeConstants.tiny,
-                color: ColorConstants.white,
-              ),
-              const SizedBox(width: SpacingConst.tiny),
-              const Flexible(
-                child: CustomText(
-                  text: StringConstants.footer,
-                  fontSize: SizeConstants.tiny,
-                  color: ColorConstants.white,
-                ),
-              ),
-            ],
-          ),
-        ),
+        FooterContainer(timeString: _timeString),
       ],
     );
   }
@@ -108,10 +71,35 @@ class _MyDesktopBodyState extends State<MyDesktopBody> {
   }
 }
 
-class FirstColumnContainer extends StatelessWidget {
-  const FirstColumnContainer({
+class TopRowHeaderContainer extends StatelessWidget {
+  const TopRowHeaderContainer({
     Key? key,
   }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  color: Colors.blueAccent[400],
+                  height: SizeConstants.topRowHeader,
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class FirstColumnContainer extends StatelessWidget {
+  const FirstColumnContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -149,8 +137,14 @@ class FirstColumnContainer extends StatelessWidget {
             child: Row(children: [
               Container(
                 width: 25,
-                color: Colors.purple,
                 height: double.maxFinite,
+                decoration: const BoxDecoration(
+                  color: Colors.purple,
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(RadiusConst.small),
+                    bottomRight: Radius.circular(RadiusConst.small),
+                  ),
+                ),
                 child: const Center(
                   child: RotatedBox(
                     quarterTurns: -1,
@@ -177,9 +171,7 @@ class FirstColumnContainer extends StatelessWidget {
 }
 
 class SecondColumnContainer extends StatelessWidget {
-  const SecondColumnContainer({
-    Key? key,
-  }) : super(key: key);
+  const SecondColumnContainer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -191,6 +183,42 @@ class SecondColumnContainer extends StatelessWidget {
           width: 500,
           color: Colors.deepPurple[300],
         ),
+      ),
+    );
+  }
+}
+
+class FooterContainer extends StatelessWidget {
+  const FooterContainer({Key? key, required String timeString})
+      : _timeString = timeString,
+        super(key: key);
+
+  final String _timeString;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: ColorConstants.black,
+      height: SizeConstants.huge,
+      margin: const EdgeInsets.symmetric(horizontal: SpacingConst.small),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SizedBox(width: SpacingConst.small),
+          CustomText(
+            text: _timeString,
+            fontSize: SizeConstants.tiny,
+            color: ColorConstants.white,
+          ),
+          const SizedBox(width: SpacingConst.tiny),
+          const Flexible(
+            child: CustomText(
+              text: StringConstants.footer,
+              fontSize: SizeConstants.tiny,
+              color: ColorConstants.white,
+            ),
+          ),
+        ],
       ),
     );
   }
