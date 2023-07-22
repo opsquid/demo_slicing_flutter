@@ -7,7 +7,7 @@ class ColorConstants {
   static const Color purple = Color(0xFF8C1B84);
   static const Color darkGrey = Color(0xFFADACAC);
   static const Color mediumGrey = Color(0xFFD9D9D9);
-  static const Color lightGrey = Color(0xFFD9D9D9);
+  static const Color lightGrey = Color(0xFFFCFCFC);
   static const Color grey = Color(0xFFE5E5E7);
   static const Color darkYellow = Color(0xFFEDAE41);
   static const Color yellow = Color(0xFFFFFFEA);

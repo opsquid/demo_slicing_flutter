@@ -14,7 +14,7 @@ class StringConstants {
   static const String dineIn = 'Dine In';
   static const String takeaway = 'Takeaway';
   static const String ojol = 'Ojol';
-  static const String desktopTitle = 'IMPRESIF MEDIA POS (DESKTOP LAYOUT)';
-  static const String mobileTitle = 'IMPRESIF MEDIA POS (MOBILE LAYOUT)';
-  static const String footer = 'IMPRESIF MEDIA POS (DESKTOP LAYOUT)';
+  static const String desktopTitle = 'POS (DESKTOP LAYOUT)';
+  static const String mobileTitle = 'POS (MOBILE LAYOUT)';
+  static const String footer = 'GMT+7 - 123456 - Aditya Perdana - Admin - POS ID 69 - Chatime - Impresif Media Dev - Ver. 0.0.1';
 }
